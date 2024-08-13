@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                 // Specifies ECMAScript target version
+    "module": "ESNext",                 // Specifies module code generation
+    "lib": ["DOM", "ESNext"],           // Specify library files to include in the compilation
+    "moduleResolution": "node",         // Module resolution strategy
+    "jsx": "react-jsx",                 // JSX code generation mode
+    "strict": true,                     // Enable all strict type-checking options
+    "esModuleInterop": true,            // Enables emit interoperability between CommonJS and ES Modules
+    "skipLibCheck": true,               // Skip type checking of declaration files
+    "resolveJsonModule": true,          // Include modules imported with .json extension
+    "baseUrl": ".",                     // Base directory to resolve non-relative module names
+    "paths": {                          // Aliases for module paths
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src"],                   // Files to include in the compilation
+  "exclude": ["node_modules", "dist"]   // Files to exclude from the compilation
+}

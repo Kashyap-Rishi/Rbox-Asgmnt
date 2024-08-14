@@ -9,6 +9,7 @@ const QueryParamHandler = () => {
 
   if (token) {
     console.log(token);
+    localStorage.setItem('token',token);
     return <DashboardLayout />;
   }
 

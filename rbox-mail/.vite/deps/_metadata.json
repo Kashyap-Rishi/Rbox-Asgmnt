@@ -1,0 +1,73 @@
+{
+  "hash": "ff3382a4",
+  "configHash": "c977d80b",
+  "lockfileHash": "53bca51e",
+  "browserHash": "766fc434",
+  "optimized": {
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "186d5a8e",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "c3aeabfc",
+      "needsInterop": true
+    },
+    "@react-oauth/google": {
+      "src": "../../node_modules/@react-oauth/google/dist/index.esm.js",
+      "file": "@react-oauth_google.js",
+      "fileHash": "84b2ae15",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "a766ccd9",
+      "needsInterop": false
+    },
+    "@mui/material": {
+      "src": "../../node_modules/@mui/material/index.js",
+      "file": "@mui_material.js",
+      "fileHash": "d9d0096b",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "b4b2ca87",
+      "needsInterop": true
+    },
+    "@mui/icons-material/ArrowDropDown": {
+      "src": "../../node_modules/@mui/icons-material/ArrowDropDown.js",
+      "file": "@mui_icons-material_ArrowDropDown.js",
+      "fileHash": "be0a35ca",
+      "needsInterop": true
+    },
+    "@mui/system": {
+      "src": "../../node_modules/@mui/system/esm/index.js",
+      "file": "@mui_system.js",
+      "fileHash": "e7855e10",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-YUNTBJI6": {
+      "file": "chunk-YUNTBJI6.js"
+    },
+    "chunk-LH6ZISGP": {
+      "file": "chunk-LH6ZISGP.js"
+    },
+    "chunk-TN64W7EN": {
+      "file": "chunk-TN64W7EN.js"
+    },
+    "chunk-OFJI6U6E": {
+      "file": "chunk-OFJI6U6E.js"
+    },
+    "chunk-45FXRYJS": {
+      "file": "chunk-45FXRYJS.js"
+    }
+  }
+}

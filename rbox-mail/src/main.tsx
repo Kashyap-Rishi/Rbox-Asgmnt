@@ -1,12 +1,19 @@
 import ReactDOM from 'react-dom/client'
 import App from './App'
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { ThemeContextProvider } from './context/ThemeContext'
+import { Provider } from 'react-redux';
+import store from './store/store';
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 
-    <GoogleOAuthProvider clientId="158478297408-gevob1skc53nfic5u33qd9nguctbmkq8.apps.googleusercontent.com">
-    <App />
-    </GoogleOAuthProvider>
+    <ThemeContextProvider>
+  <Provider store={store}>
+
+        <App />
+        </Provider>
+    </ThemeContextProvider>
+    
+   
   
 )

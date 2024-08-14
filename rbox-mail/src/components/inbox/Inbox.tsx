@@ -1,36 +1,24 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchEmails } from '../../redux/emailSlice';
-import { RootState, AppDispatch } from '../../store/store';
+import React from 'react';
+import { Grid } from '@mui/material';
+import Threads from './Threads';
+import SingleThread from './SingleThread';
+import ThreadDetail from './ThreadDetail';
 
 const Inbox: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>(); 
-  
-
-  const { emails, loading, error } = useSelector((state: RootState) => state.emails);
-
- 
-  useEffect(() => {
-    dispatch(fetchEmails());
-  }, [dispatch]);
-
   return (
-    <div>
-      <h1>Inbox</h1>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      <ul>
-        {emails.map(email => (
-          <li key={email.id}>
-            <strong>From:</strong> {email.fromName} <br />
-            <strong>Subject:</strong> {email.subject} <br />
-            <strong>Date:</strong> {new Date(email.sentAt).toLocaleString()} <br />
-            <hr />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Grid container style={{ height: '100vh' }}>
+      <Grid item xs={2} style={{ width: '23%', height: '100%', overflowY: 'auto' }}>
+        <Threads />
+      </Grid>
+      <Grid item xs={8} style={{ width: '54%', height: '100%', overflowY: 'auto' }}>
+        <SingleThread />
+      </Grid>
+      <Grid item xs={2} style={{ width: '23%', height: '100%', overflowY:'hidden' }}>
+        <ThreadDetail />
+      </Grid>
+    </Grid>
   );
 }
 
 export default Inbox;
+

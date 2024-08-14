@@ -1,6 +1,6 @@
 import React, { createContext, useState, useMemo, ReactNode } from 'react';
 import { ThemeProvider, Theme } from '@mui/material/styles';
-import { lightTheme, darkTheme } from '../themes';
+import { lightTheme, darkTheme } from '../themes/index';
 
 
 type ThemeContextType = {

@@ -1,9 +1,8 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
-import { SvgIcon } from "@mui/material";
-import EmptyMailIcon from "../../icons/svg/empty-mail";
+import { Box, Typography, useTheme } from "@mui/material";
 
 const EmptyInbox: React.FC = () => {
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -13,21 +12,33 @@ const EmptyInbox: React.FC = () => {
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
-        gap:3,
-       
+        gap: 3,
       }}
     >
-      <SvgIcon
-
-      ><EmptyMailIcon/></SvgIcon>
-      <Typography  sx={{  fontSize: '24px',
-            lineHeight: '36.53px',
-            fontWeight: 700,color:'black' }}>
+      <img
+        src={`public/no-image.png`}
+        alt="Empty Inbox"
+        style={{ width: '290px', height: '230px' }}  
+      />
+      <Typography
+        sx={{
+          fontSize: '24px',
+          lineHeight: '36.53px',
+          fontWeight: 700,
+          color: theme?.palette?.sidebar?.mainText,
+        }}
+      >
         It’s the beginning of a legendary sales pipeline
       </Typography>
-      <Typography  sx={{ fontSize: '18px',
-            lineHeight: '27.4px',
-            fontWeight: 500, color:'#9E9E9E',maxWidth:'289px' }}>
+      <Typography
+        sx={{
+          fontSize: '18px',
+          lineHeight: '27.4px',
+          fontWeight: 500,
+          color: '#9E9E9E',
+          maxWidth: '289px',
+        }}
+      >
         When you have inbound E-mails you’ll see them here
       </Typography>
     </Box>

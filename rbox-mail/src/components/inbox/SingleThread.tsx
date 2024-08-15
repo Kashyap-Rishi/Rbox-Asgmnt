@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { fetchEmailByThreadId, deleteEmail } from "../../redux/emailSlice"; // Import deleteEmail action
+import { fetchEmailByThreadId, deleteEmail } from "../../redux/emailSlice";
 import { RootState, AppDispatch } from "../../store/store";
 import { useThreadContext } from "../../context/ThreadContext";
 import SingleThreadCard from "./SingleThreadCard";
@@ -40,7 +40,7 @@ const SingleThread: React.FC = () => {
   const handleDelete = () => {
     if (threadId) {
       dispatch(deleteEmail(threadId));
-      setPopupOpen(false); // Close the popup after deletion
+      setPopupOpen(false); 
     }
   };
 
@@ -53,10 +53,10 @@ const SingleThread: React.FC = () => {
   }
 
   return (
-    <Box sx={{ position: "relative", minHeight: "100vh" }}>
+    <Box sx={{ position: "relative", minHeight: "100vh",          backgroundColor:theme?.palette?.singleThreads?.mainBackground }}>
       <Box
         sx={{
-          filter: isPopupOpen ? "blur(8px)" : "none", // Apply blur when popup is open
+          filter: isPopupOpen ? "blur(8px)" : "none",
           backgroundColor: theme?.palette?.singleThreads?.secondaryBackground,
         }}
       >
@@ -154,7 +154,7 @@ const SingleThread: React.FC = () => {
                 backgroundColor:
                   theme?.palette?.singleThreads?.primaryBackground,
               }}
-              onClick={() => setPopupOpen(true)} // Open the popup on click
+              onClick={() => setPopupOpen(true)} 
             >
               <MoreHorizIcon />
             </IconButton>

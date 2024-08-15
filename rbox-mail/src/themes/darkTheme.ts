@@ -41,7 +41,7 @@ const darkTheme = createTheme({
       mainText: "#FFFFFF",
       primaryText: " #FFFFFF66 ",
       secondaryText: "#D3D7DB",
-      mainBackground: "#0000000",
+      mainBackground: "#000000",
       primaryBackground: "#1F1F1F",
       secondaryBackground: "#000000",
       mainBorder: "#F8FAFC33",

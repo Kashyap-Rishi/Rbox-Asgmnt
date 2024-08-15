@@ -16,7 +16,7 @@ const EmptyInbox: React.FC = () => {
       }}
     >
       <img
-        src={`public/no-image.png`}
+        src={`/no-image.png`}
         alt="Empty Inbox"
         style={{ width: "290px", height: "230px" }}
       />

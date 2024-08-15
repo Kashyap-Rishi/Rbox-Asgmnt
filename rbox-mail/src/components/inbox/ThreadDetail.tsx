@@ -58,6 +58,7 @@ const ThreadDetail: React.FC = () => {
               display: "flex",
               justifyContent: "space-between",
               padding: "8px 0",
+            
             }}
           >
             <Typography
@@ -72,10 +73,12 @@ const ThreadDetail: React.FC = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: "14px",
+                fontSize: "13px",
                 color: theme?.palette?.threads?.detailsText,
                 lineHeight: "16.94px",
                 fontWeight: 400,
+                mt:-0.2
+              
               }}
             >
               {detail.value}

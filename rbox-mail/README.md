@@ -1,50 +1,55 @@
-# React + TypeScript + Vite
+## REACHINBOX TASK
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
+1. Clone or fork the project - 
+   https://github.com/Kashyap-Rishi/Rbox-Asgmnt
 
-## Expanding the ESLint configuration
+2. Install react through vite - 
+   $ npm create vite@latest
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+3. Go to your project directory -
+   cd my-project
 
-- Configure the top-level `parserOptions` property like this:
+4. Now run the following command to install dependecies and run the server - 
+   npm install
+   npm run dev
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Delpoy
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+ The website is deployed on netlify - https://rbox-asgmnt.vercel.app/
+
+
+
+
+## Logic implemented
+
+1. TOGGLE THEME 
+
+
+a. Created context hook for toggling between the modes
+
+b. Custome color themes for dark and light mode in themes folder
+
+
+2. API Calls
+  
+
+React-Redux-Toolkit - Utilized redux for managing request and response state effectively and globally.
+
+State management - Implemented store, dipatcher, reducer and builder functions for scalability and code reusability.
+
+
+3. COMPONENTS
+
+
+Components - Divided the code into multiple Components for better code reusbility and readability.
+
+Cards - Made resuable Card components for rendering inboxes and threads avoiding code duplication passing the data as props
+
+## Tech Stacks
+
+ReactJS, TypeScript, Redux, React-MUI, CSS

@@ -1,11 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Login from "./components/login/Login";
 import DashboardLayout from "./components/dashboard/DashboardLayout";
 
@@ -16,11 +10,15 @@ const App: React.FC = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const token = queryParams.get("token");
+    const currentPath = location.pathname;
 
     if (token) {
       console.log(token);
       localStorage.setItem("token", token);
-    } else {
+      if (currentPath === "/login") {
+        navigate("/");
+      }
+    } else if (currentPath !== "/login") {
       navigate("/login");
     }
   }, [location, navigate]);

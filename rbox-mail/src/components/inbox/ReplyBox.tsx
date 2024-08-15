@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -6,6 +6,8 @@ import {
   Button,
   IconButton,
   useTheme,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
@@ -22,21 +24,36 @@ interface ReplyBoxProps {
 
 const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
   const theme = useTheme();
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  const handleSend = () => {
+    // Simulate sending the message
+    setTimeout(() => {
+      // Close the reply box
+      onClose();
+
+      // Show success message
+      setOpenSnackbar(true);
+    }, 500); // Simulate network delay
+  };
+
+  const handleSnackbarClose = () => {
+    setOpenSnackbar(false);
+  };
+
   return (
     <Box
       sx={{
         position: "fixed",
         bottom: 0,
         minWidth: "752px",
-
         backgroundColor: theme.palette.mode === "light" ? "#FFFFFF" : "#141517",
         boxShadow: "0px -2px 4px rgba(0, 0, 0, 0.1)",
         ml: "50px",
-        padding: " 0",
+        padding: "0",
         zIndex: 1000,
         borderRadius: "8px",
         border: "1px solid",
-
         borderImageSource:
           theme.palette.mode === "light"
             ? "linear-gradient(180deg, #4A5055 0%, #2A2F32 100%)"
@@ -98,7 +115,6 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
         <Box
           sx={{
             display: "inline-block",
-
             ml: 0.5,
           }}
         >
@@ -135,7 +151,6 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
         <Box
           sx={{
             display: "inline-block",
-
             ml: 0.5,
           }}
         >
@@ -222,12 +237,12 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-
           padding: "8px 16px",
           borderRadius: "4px",
         }}
       >
         <Button
+          onClick={handleSend}
           sx={{
             width: "114px",
             height: "40px",
@@ -276,6 +291,30 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
           <FormatItalicIcon sx={{ color: "#ADADAD" }} />
         </Box>
       </Box>
+
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleSnackbarClose}
+        action={
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleSnackbarClose}
+          >
+            <CloseIcon fontSize="small" />
+          </IconButton>
+        }
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          Sent successfully!
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

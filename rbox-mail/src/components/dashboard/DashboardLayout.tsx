@@ -16,6 +16,7 @@ import {
   Popover,
   Button,
   SvgIcon,
+  Badge,
 } from "@mui/material";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import HomeIcon from "../../icons/svg/home";
@@ -62,12 +63,30 @@ const Main = styled("main")(({ theme }) => ({
 }));
 
 const drawerItems = [
-  { icon: <HomeIcon  />, component: <EmptyInbox /> },
+  { icon: <HomeIcon />, component: <EmptyInbox /> },
   { icon: <ContactIcon />, component: <EmptyInbox /> },
   { icon: <InboxIcon />, component: <EmptyInbox /> },
   { icon: <MessageIcon />, component: <EmptyInbox /> },
   { icon: <MenuIcon />, component: <EmptyInbox /> },
-  { icon: <ItemIcon />, component: <Inbox /> },
+  {
+    icon: (
+      <Badge
+        badgeContent="12+"
+        color="error"
+        overlap="circular"
+        sx={{
+          "& .MuiBadge-badge": {
+            fontSize: "0.5rem",
+            height: "12px",
+            maxWidth: "10px",
+          },
+        }}
+      >
+        <ItemIcon />
+      </Badge>
+    ),
+    component: <Inbox />,
+  },
   { icon: <StatisticIcon />, component: <EmptyInbox /> },
 ];
 
@@ -134,7 +153,7 @@ const DashboardLayout: React.FC = () => {
             <ListItemIcon
               sx={{ display: "flex", justifyContent: "center", minWidth: 0 }}
             >
-              <SvgIcon>{item.icon}</SvgIcon>
+              {item.icon}
             </ListItemIcon>
           </ListItem>
         ))}

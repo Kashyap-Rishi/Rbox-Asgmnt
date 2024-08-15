@@ -1,5 +1,12 @@
 import React from "react";
-import { Box, Typography, TextField, Button, IconButton } from "@mui/material";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  IconButton,
+  useTheme,
+} from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import SendIcon from "@mui/icons-material/Send";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
@@ -14,6 +21,7 @@ interface ReplyBoxProps {
 }
 
 const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -21,7 +29,7 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
         bottom: 0,
         minWidth: "752px",
 
-        backgroundColor: "#FFFFFF",
+        backgroundColor: theme.palette.mode === "light" ? "#FFFFFF" : "#141517",
         boxShadow: "0px -2px 4px rgba(0, 0, 0, 0.1)",
         ml: "50px",
         padding: " 0",
@@ -29,18 +37,25 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
         borderRadius: "8px",
         border: "1px solid",
 
-        borderImageSource: "linear-gradient(180deg, #4A5055 0%, #2A2F32 100%)",
+        borderImageSource:
+          theme.palette.mode === "light"
+            ? "linear-gradient(180deg, #4A5055 0%, #2A2F32 100%)"
+            : "linear-gradient(180deg, #4A5055 0%, #2A2F32 100%)",
       }}
     >
       <Box
         sx={{
           display: "flex",
           px: "25px",
-          backgroundColor: "#ECEFF3",
+          backgroundColor:
+            theme.palette.mode === "light" ? "#ECEFF3" : "#23272C",
           justifyContent: "space-between",
           alignItems: "center",
           mb: 1,
-          borderBottom: "1px solid #41464B",
+          borderBottom:
+            theme.palette.mode === "light"
+              ? "1px solid #41464B"
+              : "1px solid #41464B",
         }}
       >
         <Typography
@@ -59,7 +74,15 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
         </IconButton>
       </Box>
 
-      <Box sx={{ mb: 1, borderBottom: "1px solid #41464B" }}>
+      <Box
+        sx={{
+          mb: 1,
+          borderBottom:
+            theme.palette.mode === "light"
+              ? "1px solid #41464B"
+              : "1px solid #41464B",
+        }}
+      >
         <Typography
           sx={{
             display: "inline",
@@ -88,7 +111,15 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
         </Box>
       </Box>
 
-      <Box sx={{ mb: 1, borderBottom: "1px solid #41464B" }}>
+      <Box
+        sx={{
+          mb: 1,
+          borderBottom:
+            theme.palette.mode === "light"
+              ? "1px solid #41464B"
+              : "1px solid #41464B",
+        }}
+      >
         <Typography
           sx={{
             display: "inline",
@@ -117,7 +148,15 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
         </Box>
       </Box>
 
-      <Box sx={{ mb: 1, borderBottom: "1px solid #41464B" }}>
+      <Box
+        sx={{
+          mb: 1,
+          borderBottom:
+            theme.palette.mode === "light"
+              ? "1px solid #41464B"
+              : "1px solid #41464B",
+        }}
+      >
         <Typography
           sx={{
             display: "inline",
@@ -148,7 +187,10 @@ const ReplyBox: React.FC<ReplyBoxProps> = ({ onClose }) => {
       <Box>
         <Box
           sx={{
-            borderBottom: "1px solid #41464B",
+            borderBottom:
+              theme.palette.mode === "light"
+                ? "1px solid #41464B"
+                : "1px solid #41464B",
             mt: 1,
           }}
         >

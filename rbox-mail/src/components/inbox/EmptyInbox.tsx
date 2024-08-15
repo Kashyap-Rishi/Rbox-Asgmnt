@@ -18,12 +18,12 @@ const EmptyInbox: React.FC = () => {
       <img
         src={`public/no-image.png`}
         alt="Empty Inbox"
-        style={{ width: '290px', height: '230px' }}  
+        style={{ width: "290px", height: "230px" }}
       />
       <Typography
         sx={{
-          fontSize: '24px',
-          lineHeight: '36.53px',
+          fontSize: "24px",
+          lineHeight: "36.53px",
           fontWeight: 700,
           color: theme?.palette?.sidebar?.mainText,
         }}
@@ -32,11 +32,11 @@ const EmptyInbox: React.FC = () => {
       </Typography>
       <Typography
         sx={{
-          fontSize: '18px',
-          lineHeight: '27.4px',
+          fontSize: "18px",
+          lineHeight: "27.4px",
           fontWeight: 500,
-          color: '#9E9E9E',
-          maxWidth: '289px',
+          color: "#9E9E9E",
+          maxWidth: "289px",
         }}
       >
         When you have inbound E-mails you’ll see them here

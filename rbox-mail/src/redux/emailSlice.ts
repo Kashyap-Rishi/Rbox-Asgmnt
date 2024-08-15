@@ -1,53 +1,77 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import { Email,SingleEmail,  EmailResponse, SingleEmailResponse, ResetResponse } from './types';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import {
+  Email,
+  SingleEmail,
+  EmailResponse,
+  SingleEmailResponse,
+  ResetResponse,
+} from "./types";
 
 const initialState = {
   emails: [] as Email[],
   email: [] as SingleEmail[],
   loading: false,
   error: null as string | null,
-  replySuccess: null as string | null, // New state for reply success message
+  replySuccess: null as string | null,
 };
 
-
 // Fetch all emails
-export const fetchEmails = createAsyncThunk('emails/fetchEmails', async (_, thunkAPI) => {
-  try {
-    const token = localStorage.getItem('token');
-    console.log(token);
-    const response = await axios.get<EmailResponse>('https://hiring.reachinbox.xyz/api/v1/onebox/list', {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error);
+export const fetchEmails = createAsyncThunk(
+  "emails/fetchEmails",
+  async (_, thunkAPI) => {
+    try {
+      const token = localStorage.getItem("token");
+      console.log(token);
+      const response = await axios.get<EmailResponse>(
+        "https://hiring.reachinbox.xyz/api/v1/onebox/list",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      return response.data.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 // Fetch a single email by thread ID
-export const fetchEmailByThreadId = createAsyncThunk('emails/fetchEmailByThreadId', async (threadId: number, thunkAPI) => {
-  try {
-    const token = localStorage.getItem('token');
-    const response = await axios.get<SingleEmailResponse>(`https://hiring.reachinbox.xyz/api/v1/onebox/messages/${threadId}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
+export const fetchEmailByThreadId = createAsyncThunk(
+  "emails/fetchEmailByThreadId",
+  async (threadId: number, thunkAPI) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.get<SingleEmailResponse>(
+        `https://hiring.reachinbox.xyz/api/v1/onebox/messages/${threadId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      return response.data.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
   }
-});
+);
 
 // In your Redux slice file (e.g., emailSlice.ts)
 
 export const replyToEmail = createAsyncThunk(
-  'emails/replyToEmail',
-  async ({ threadId, emailData }: { threadId: number, emailData: any }, thunkAPI) => {
+  "emails/replyToEmail",
+  async (
+    { threadId, emailData }: { threadId: number; emailData: any },
+    thunkAPI
+  ) => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.post(`https://hiring.reachinbox.xyz/api/v1/onebox/reply/${threadId}`, emailData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const token = localStorage.getItem("token");
+      const response = await axios.post(
+        `https://hiring.reachinbox.xyz/api/v1/onebox/reply/${threadId}`,
+        emailData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       return response.data; // This would likely return a success message or updated email thread
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -55,35 +79,47 @@ export const replyToEmail = createAsyncThunk(
   }
 );
 
-
 // Delete email by thread ID
-export const deleteEmail = createAsyncThunk('emails/deleteEmail', async (threadId: number, thunkAPI) => {
-  try {
-    const token = localStorage.getItem('token');
-    await axios.delete(`https://hiring.reachinbox.xyz/api/v1/onebox/messages/${threadId}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return threadId;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
+export const deleteEmail = createAsyncThunk(
+  "emails/deleteEmail",
+  async (threadId: number, thunkAPI) => {
+    try {
+      const token = localStorage.getItem("token");
+      await axios.delete(
+        `https://hiring.reachinbox.xyz/api/v1/onebox/messages/${threadId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      return threadId;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
   }
-});
+);
 
 // Reset onebox
-export const resetOnebox = createAsyncThunk('emails/resetOnebox', async (_, thunkAPI) => {
-  try {
-    const token = localStorage.getItem('token');
-    const response = await axios.post<SingleEmailResponse>('https://hiring.reachinbox.xyz/api/v1/onebox/reset', {}, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data.data;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
+export const resetOnebox = createAsyncThunk(
+  "emails/resetOnebox",
+  async (_, thunkAPI) => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post<SingleEmailResponse>(
+        "https://hiring.reachinbox.xyz/api/v1/onebox/reset",
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      return response.data.data;
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
   }
-});
+);
 
 const emailSlice = createSlice({
-  name: 'emails',
+  name: "emails",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -119,11 +155,11 @@ const emailSlice = createSlice({
       .addCase(replyToEmail.pending, (state) => {
         state.loading = true;
         state.error = null;
-        state.replySuccess = null; // Reset success message
+        state.replySuccess = null;
       })
       .addCase(replyToEmail.fulfilled, (state, action) => {
         state.loading = false;
-        state.replySuccess = "Reply sent successfully"; // Set success message
+        state.replySuccess = "Reply sent successfully";
       })
       .addCase(replyToEmail.rejected, (state, action) => {
         state.loading = false;
@@ -132,13 +168,15 @@ const emailSlice = createSlice({
 
       // Handle deleteEmail
       .addCase(deleteEmail.fulfilled, (state, action) => {
-        state.emails = state.emails.filter((email) => email.threadId !== action.payload);
+        state.emails = state.emails.filter(
+          (email) => email.threadId !== action.payload
+        );
       })
 
       // Handle resetOnebox
-      .addCase(resetOnebox.fulfilled, (state,action) => {
+      .addCase(resetOnebox.fulfilled, (state, action) => {
         state.emails = [];
-        state.email = action.payload;;
+        state.email = action.payload;
       });
   },
 });

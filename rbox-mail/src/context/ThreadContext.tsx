@@ -1,4 +1,10 @@
-import React, { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import React, {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 
 interface ThreadContextType {
   threadId: number | null;
@@ -7,11 +13,13 @@ interface ThreadContextType {
 
 const ThreadContext = createContext<ThreadContextType | undefined>(undefined);
 
-export const ThreadProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const ThreadProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [threadId, setThreadId] = useState<number | null>(null);
 
   useEffect(() => {
-    console.log('Current Thread ID:', threadId);
+    console.log("Current Thread ID:", threadId);
   }, [threadId]);
 
   return (
@@ -24,7 +32,7 @@ export const ThreadProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 export const useThreadContext = (): ThreadContextType => {
   const context = useContext(ThreadContext);
   if (context === undefined) {
-    throw new Error('useThreadContext must be used within a ThreadProvider');
+    throw new Error("useThreadContext must be used within a ThreadProvider");
   }
   return context;
 };

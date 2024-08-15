@@ -1,33 +1,44 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Login from './components/login/Login';
-import DashboardLayout from './components/dashboard/DashboardLayout';
+import React, { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import Login from "./components/login/Login";
+import DashboardLayout from "./components/dashboard/DashboardLayout";
 
-const QueryParamHandler = () => {
+const App: React.FC = () => {
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const token = queryParams.get('token');
+  const navigate = useNavigate();
 
-  if (token) {
-    console.log(token);
-    localStorage.setItem('token',token);
-    return <DashboardLayout />;
-  }
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const token = queryParams.get("token");
 
-  return <div>Invalid URL or Missing Token</div>;
-};
+    if (token) {
+      console.log(token);
+      localStorage.setItem("token", token);
+    } else {
+      navigate("/login");
+    }
+  }, [location, navigate]);
 
-function App() {
   return (
     <div className="App-main">
-      <Router>
-        <Routes>
-        <Route path="/" element={<QueryParamHandler />} />
-          <Route path="/login" element={<Login />} />
-         
-        </Routes>
-      </Router>
+      <Routes>
+        <Route path="/" element={<DashboardLayout />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </div>
   );
-}
+};
 
-export default App;
+const RootApp: React.FC = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default RootApp;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography ,useTheme} from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -9,7 +9,7 @@ import CampaignMailIcon from "../../icons/svg/campaign-mail";
 import OpenMailIcon from "../../icons/svg/open-mail";
 
 const ThreadDetail: React.FC = () => {
-  const theme=useTheme();
+  const theme = useTheme();
   const leadDetails = [
     { label: "Name", value: "Orlando" },
     { label: "Contact No", value: "+54-9062827869" },
@@ -29,7 +29,7 @@ const ThreadDetail: React.FC = () => {
       sx={{
         borderLeft: `1px solid ${theme?.palette?.threads?.borderColor}`,
         minHeight: "100vh",
-        backgroundColor:theme?.palette?.threads?.mainBackground,
+        backgroundColor: theme?.palette?.threads?.mainBackground,
         position: "fixed",
       }}
     >
@@ -122,8 +122,18 @@ const ThreadDetail: React.FC = () => {
             padding: "0 16px",
           }}
         >
-          <span style={{ color: theme.palette.mode === "dark" ? "white" : "black" }}>3</span> steps |{" "}
-          <span style={{ color: theme.palette.mode === "dark" ? "white" : "black" }}>5</span> Days in Sequence
+          <span
+            style={{ color: theme.palette.mode === "dark" ? "white" : "black" }}
+          >
+            3
+          </span>{" "}
+          steps |{" "}
+          <span
+            style={{ color: theme.palette.mode === "dark" ? "white" : "black" }}
+          >
+            5
+          </span>{" "}
+          Days in Sequence
         </Typography>
 
         <Timeline sx={{ marginLeft: "-80%" }}>

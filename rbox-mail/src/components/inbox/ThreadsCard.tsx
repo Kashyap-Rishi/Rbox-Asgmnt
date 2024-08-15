@@ -36,7 +36,7 @@ const EmailCard: React.FC<EmailCardProps> = ({
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Typography
           sx={{
-            fontSize: "14px",
+            fontSize: "13px",
             color: theme?.palette?.threads?.primaryText,
             lineHeight: "20px",
             fontWeight: 500,
@@ -46,7 +46,7 @@ const EmailCard: React.FC<EmailCardProps> = ({
         </Typography>
         <Typography
           sx={{
-            fontSize: "14px",
+            fontSize: "13px",
             color: theme?.palette?.threads?.datetext,
             whiteSpace: "nowrap",
           }}
